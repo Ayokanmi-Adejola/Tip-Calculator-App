@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Frontend Mentor | Tip calculator app</title>
+</head>
+<body>
+  <main class="container">
+    <div class="logo">
+      <img src="./images/logo.svg" alt="SPLITTER">
+    </div>
+
+    <div class="calculator">
+      <div class="input-section">
+        <div class="input-group">
+          <label for="bill">Bill</label>
+          <div class="input-wrapper">
+            <img src="./images/icon-dollar.svg" alt="Dollar" class="input-icon">
+            <input type="number" id="bill" placeholder="0" min="0" step="0.01">
+          </div>
+          <span class="error-message" id="bill-error"></span>
+        </div>
+
+        <div class="input-group">
+          <label>Select Tip %</label>
+          <div class="tip-buttons">
+            <button type="button" class="tip-btn" data-tip="5">5%</button>
+            <button type="button" class="tip-btn" data-tip="10">10%</button>
+            <button type="button" class="tip-btn" data-tip="15">15%</button>
+            <button type="button" class="tip-btn" data-tip="25">25%</button>
+            <button type="button" class="tip-btn" data-tip="50">50%</button>
+            <input type="number" id="custom-tip" placeholder="custom" min="0" max="100" step="1">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="people">Number of People</label>
+          <div class="input-wrapper">
+            <img src="./images/icon-person.svg" alt="Person" class="input-icon">
+            <input type="number" id="people" placeholder="0" min="1" step="1">
+          </div>
+          <span class="error-message" id="people-error"></span>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="result-item">
+          <div class="result-label">
+            <span class="result-title">Tip Amount</span>
+            <span class="result-subtitle">/ person</span>
+          </div>
+          <div class="result-value" id="tip-amount">$0.00</div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-label">
+            <span class="result-title">Total</span>
+            <span class="result-subtitle">/ person</span>
+          </div>
+          <div class="result-value" id="total-amount">$0.00</div>
+        </div>
+
+        <button type="button" id="reset-btn" class="reset-btn" disabled>RESET</button>
+      </div>
+    </div>
+  </main>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Ayokanmi Adejola</a>.
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

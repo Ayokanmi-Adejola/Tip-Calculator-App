@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator Tests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-case {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .pass { background-color: #d4edda; border-color: #c3e6cb; }
+        .fail { background-color: #f8d7da; border-color: #f5c6cb; }
+        .test-title { font-weight: bold; margin-bottom: 10px; }
+        .test-result { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Tip Calculator Test Suite</h1>
+    <div id="test-results"></div>
+
+    <script>
+        // Test functions
+        function calculateTip(bill, tipPercent, people) {
+            if (bill <= 0 || people <= 0 || tipPercent < 0) return { tipPerPerson: 0, totalPerPerson: 0 };
+            
+            const tipAmount = (bill * tipPercent) / 100;
+            const totalAmount = bill + tipAmount;
+            
+            return {
+                tipPerPerson: tipAmount / people,
+                totalPerPerson: totalAmount / people
+            };
+        }
+
+        function runTest(description, testFn) {
+            try {
+                const result = testFn();
+                displayTest(description, true, result);
+                return true;
+            } catch (error) {
+                displayTest(description, false, error.message);
+                return false;
+            }
+        }
+
+        function displayTest(description, passed, message) {
+            const testDiv = document.createElement('div');
+            testDiv.className = `test-case ${passed ? 'pass' : 'fail'}`;
+            testDiv.innerHTML = `
+                <div class="test-title">${description}</div>
+                <div class="test-result">${passed ? '✅ PASS' : '❌ FAIL'}: ${message}</div>
+            `;
+            document.getElementById('test-results').appendChild(testDiv);
+        }
+
+        function assertEqual(actual, expected, tolerance = 0.01) {
+            if (Math.abs(actual - expected) > tolerance) {
+                throw new Error(`Expected ${expected}, got ${actual}`);
+            }
+            return `Expected ${expected}, got ${actual}`;
+        }
+
+        // Run tests
+        document.addEventListener('DOMContentLoaded', function() {
+            let passedTests = 0;
+            let totalTests = 0;
+
+            // Test 1: Basic calculation
+            totalTests++;
+            if (runTest('Basic tip calculation (Bill: $142.55, Tip: 15%, People: 5)', () => {
+                const result = calculateTip(142.55, 15, 5);
+                assertEqual(result.tipPerPerson, 4.27, 0.01);
+                assertEqual(result.totalPerPerson, 32.78, 0.01);
+                return `Tip per person: $${result.tipPerPerson.toFixed(2)}, Total per person: $${result.totalPerPerson.toFixed(2)}`;
+            })) passedTests++;
+
+            // Test 2: Zero tip
+            totalTests++;
+            if (runTest('Zero tip calculation (Bill: $100, Tip: 0%, People: 2)', () => {
+                const result = calculateTip(100, 0, 2);
+                assertEqual(result.tipPerPerson, 0);
+                assertEqual(result.totalPerPerson, 50);
+                return `Tip per person: $${result.tipPerPerson.toFixed(2)}, Total per person: $${result.totalPerPerson.toFixed(2)}`;
+            })) passedTests++;
+
+            // Test 3: High tip percentage
+            totalTests++;
+            if (runTest('High tip calculation (Bill: $50, Tip: 50%, People: 1)', () => {
+                const result = calculateTip(50, 50, 1);
+                assertEqual(result.tipPerPerson, 25);
+                assertEqual(result.totalPerPerson, 75);
+                return `Tip per person: $${result.tipPerPerson.toFixed(2)}, Total per person: $${result.totalPerPerson.toFixed(2)}`;
+            })) passedTests++;
+
+            // Test 4: Invalid inputs
+            totalTests++;
+            if (runTest('Invalid inputs (Bill: 0, Tip: 15%, People: 0)', () => {
+                const result = calculateTip(0, 15, 0);
+                assertEqual(result.tipPerPerson, 0);
+                assertEqual(result.totalPerPerson, 0);
+                return `Tip per person: $${result.tipPerPerson.toFixed(2)}, Total per person: $${result.totalPerPerson.toFixed(2)}`;
+            })) passedTests++;
+
+            // Test 5: Decimal values
+            totalTests++;
+            if (runTest('Decimal calculation (Bill: $25.48, Tip: 18%, People: 3)', () => {
+                const result = calculateTip(25.48, 18, 3);
+                assertEqual(result.tipPerPerson, 1.53, 0.01);
+                assertEqual(result.totalPerPerson, 10.02, 0.01);
+                return `Tip per person: $${result.tipPerPerson.toFixed(2)}, Total per person: $${result.totalPerPerson.toFixed(2)}`;
+            })) passedTests++;
+
+            // Summary
+            const summaryDiv = document.createElement('div');
+            summaryDiv.style.cssText = 'margin-top: 20px; padding: 15px; background-color: #e9ecef; border-radius: 5px; font-weight: bold;';
+            summaryDiv.innerHTML = `Test Summary: ${passedTests}/${totalTests} tests passed`;
+            document.getElementById('test-results').appendChild(summaryDiv);
+        });
+    </script>
+</body>
+</html>

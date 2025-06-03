@@ -1,0 +1,247 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  background-color: hsl(185, 41%, 84%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Container and layout */
+.container {
+  width: 100%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  margin-bottom: 1rem;
+}
+
+.calculator {
+  background-color: hsl(0, 100%, 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 920px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  box-shadow: 0 32px 43px rgba(79, 166, 175, 0.2);
+}
+
+/* Input section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  color: hsl(186, 14%, 43%);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  background-color: hsl(189, 47%, 97%);
+  color: hsl(183, 100%, 15%);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: hsl(172, 67%, 45%);
+}
+
+input[type="number"]:invalid {
+  border-color: #e17457;
+}
+
+input[type="number"]::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+
+/* Custom tip input */
+#custom-tip {
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+#custom-tip::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+
+/* Tip buttons */
+.tip-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.tip-btn {
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(0, 100%, 100%);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tip-btn:hover {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+}
+
+.tip-btn.active {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+}
+
+/* Results section */
+.results-section {
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-title {
+  color: hsl(0, 100%, 100%);
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.result-subtitle {
+  color: hsl(184, 14%, 56%);
+  font-size: 0.8rem;
+}
+
+.result-value {
+  color: hsl(172, 67%, 45%);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Reset button */
+.reset-btn {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.reset-btn:hover:not(:disabled) {
+  background-color: hsl(185, 41%, 84%);
+}
+
+.reset-btn:disabled {
+  background-color: hsl(183, 78%, 24%);
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+/* Error messages */
+.error-message {
+  color: #e17457;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 1.25rem;
+}
+
+/* Attribution */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 2rem;
+  color: hsl(186, 14%, 43%);
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .calculator {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+  
+  .tip-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .results-section {
+    padding: 2.5rem;
+  }
+  
+  .result-value {
+    font-size: 3rem;
+  }
+}
