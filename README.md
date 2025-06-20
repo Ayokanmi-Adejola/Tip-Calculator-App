@@ -1,6 +1,6 @@
 # Tip Calculator App
 
-A fully functional tip calculator app built with HTML, CSS, and JavaScript. This project is a solution to the [Frontend Mentor Tip Calculator App challenge](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX).
+A fully functional tip calculator app built with HTML, CSS, and JavaScript. This project is a solution to the [Frontend Mentor Tip Calculator App challenge](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX)
 
 
 ## ✨ Features
