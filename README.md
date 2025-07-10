@@ -108,13 +108,6 @@ Run the tests by opening `test.html` in your browser.
 - **Accessibility** best practices
 - **Error handling** and user feedback
 
-## 🎯 Challenge Requirements Met
-
-✅ View optimal layout for different screen sizes
-✅ See hover states for all interactive elements
-✅ Calculate correct tip and total cost per person
-✅ Handle invalid inputs with proper error messages
-✅ Reset functionality to clear all inputs
 
 ## Author
 
