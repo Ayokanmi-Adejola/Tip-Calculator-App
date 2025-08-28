@@ -2,6 +2,7 @@
 
 A fully functional tip calculator app built with HTML, CSS, and JavaScript. This project is a solution to the [Frontend Mentor Tip Calculator App challenge](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX)
 
+![Design preview for the Tip calculator app coding challenge](./preview.jpg)
 
 ## ✨ Features
 
@@ -12,10 +13,6 @@ A fully functional tip calculator app built with HTML, CSS, and JavaScript. This
 - **Interactive UI** - Hover states and visual feedback for all interactive elements
 - **Reset functionality** - Clear all inputs and start fresh with one click
 - **Accessibility** - Proper semantic HTML, labels, and keyboard navigation
-
-## 🖼️ Design Preview
-
-![Design preview for the Tip calculator app coding challenge](./preview.jpg)
 
 ## 🛠️ Built With
 
